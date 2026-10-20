@@ -1,0 +1,56 @@
+---
+import sprite from './sprite.svg?raw';
+
+const icons = [
+  { type: 'scissors', left: '5%', top: '11%', size: 30, rotate: '-18deg', delay: '-3s', duration: '9s' },
+  { type: 'heart', left: '91%', top: '17%', size: 24, rotate: '12deg', delay: '-6s', duration: '8s' },
+  { type: 'clover', left: '3%', top: '34%', size: 28, rotate: '-8deg', delay: '-9s', duration: '12s' },
+  { type: 'heart-filled', left: '96%', top: '39%', size: 18, rotate: '16deg', delay: '-2s', duration: '7s' },
+  { type: 'scissors', left: '94%', top: '56%', size: 34, rotate: '20deg', delay: '-7s', duration: '11s' },
+  { type: 'clover', left: '5%', top: '64%', size: 24, rotate: '12deg', delay: '-4s', duration: '13s' },
+  { type: 'heart', left: '91%', top: '77%', size: 30, rotate: '-12deg', delay: '-10s', duration: '10s' },
+  { type: 'heart-filled', left: '3%', top: '84%', size: 17, rotate: '8deg', delay: '-5s', duration: '8s' },
+  { type: 'clover', left: '96%', top: '91%', size: 27, rotate: '-10deg', delay: '-12s', duration: '14s' },
+  { type: 'scissors', left: '2%', top: '48%', size: 21, rotate: '10deg', delay: '-1s', duration: '8s' },
+  { type: 'heart', left: '97%', top: '7%', size: 19, rotate: '4deg', delay: '-8s', duration: '9s' },
+  { type: 'clover', left: '7%', top: '94%', size: 21, rotate: '17deg', delay: '-3s', duration: '11s' },
+  { type: 'heart-filled', left: '89%', top: '29%', size: 16, rotate: '-14deg', delay: '-11s', duration: '7s' },
+  { type: 'scissors', left: '4%', top: '73%', size: 26, rotate: '-6deg', delay: '-5s', duration: '10s' },
+];
+---
+
+<div class="floating-decor" aria-hidden="true">
+  <Fragment set:html={sprite} />
+  {icons.map((icon, index) => (
+    <svg
+      class:list={[
+        'decor-icon',
+        `decor-icon--${icon.type}`,
+        { 'decor-icon--mobile-hidden': index >= 7 },
+      ]}
+      style={`--decor-left:${icon.left};--decor-top:${icon.top};--decor-size:${icon.size}px;--decor-rotation:${icon.rotate};--decor-delay:${icon.delay};--decor-duration:${icon.duration};`}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {icon.type === 'scissors' ? (
+        <>
+          <use href="#decor-scissors-upper" class="scissor-blade scissor-blade--upper" />
+          <use href="#decor-scissors-lower" class="scissor-blade scissor-blade--lower" />
+        </>
+      ) : (
+        <use href={`#decor-${icon.type}`} />
+      )}
+    </svg>
+  ))}
+</div>
+
+<script>
+  const isLowPowerDevice =
+    navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 4;
+  const prefersReducedData = window.matchMedia('(prefers-reduced-data: reduce)').matches;
+
+  if (isLowPowerDevice || prefersReducedData) {
+    document.documentElement.classList.add('low-power-decor');
+  }
+</script>

@@ -1,0 +1,35 @@
+---
+// src/layouts/Layout.astro
+import '../styles/globals.css';
+import '../styles/tokens.css';
+import '../styles/decor.css';
+import BackgroundGradient from '../components/decor/BackgroundGradient.astro';
+import FloatingDecor from '../components/decor/FloatingDecor.astro';
+
+const isAdmin = Astro.url.pathname.startsWith('/admin');
+const isDevPage = Astro.url.pathname.startsWith('/dev/');
+---
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nails by Natalia</title>
+    <meta name="description" content="Diseño de uñas profesional y creativo por Natalia" />
+    {isDevPage && <meta name="robots" content="noindex, nofollow" />}
+  </head>
+  <body>
+    <BackgroundGradient animated={!isAdmin} />
+    {!isAdmin && <FloatingDecor />}
+    <slot />
+    <script>
+      const pageVisibilityClass = 'decor-page-hidden';
+      const updatePageVisibility = () => {
+        document.documentElement.classList.toggle(pageVisibilityClass, document.hidden);
+      };
+
+      document.addEventListener('visibilitychange', updatePageVisibility);
+      updatePageVisibility();
+    </script>
+  </body>
+</html>

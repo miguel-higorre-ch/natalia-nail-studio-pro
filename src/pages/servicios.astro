@@ -1,0 +1,146 @@
+---
+// src/pages/servicios.astro
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+  <main class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <header class="mb-12 text-center">
+        <h2 class="text-3xl font-bold text-pink-800 mb-4">
+          Nuestros Servicios
+        </h2>
+        <p class="text-lg text-gray-600">
+          Descubre nuestros servicios especializados en cuidado y diseño de uñas
+        </p>
+      </header>
+
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Servicio 1: Manicura Clásica -->
+        <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+              <span class="bg-pink-100 text-pink-600 rounded-full p-3">
+                💅
+              </span>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-pink-800 mb-2">Manicura Clásica</h3>
+              <p class="text-gray-600 mb-4">
+                Cuidado y esmaltado tradicional para uñas naturales, incluyendo corte, limado y hidratación.
+              </p>
+              <div class="flex items-baseline">
+                <span class="text-pink-600 font-bold mr-2">$15.000</span>
+                <span class="text-gray-500 text-sm">45 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicio 2: Manicura de Gel -->
+        <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+              <span class="bg-pink-100 text-pink-600 rounded-full p-3">
+                ✨
+              </span>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-pink-800 mb-2">Manicura de Gel</h3>
+              <p class="text-gray-600 mb-4">
+                Uñas de gel duraderas con acabado brillante profesional que dura hasta 3 semanas sin agrietarse.
+              </p>
+              <div class="flex items-baseline">
+                <span class="text-pink-600 font-bold mr-2">$25.000</span>
+                <span class="text-gray-500 text-sm">60 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicio 3: Extensions de Uñas -->
+        <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+              <span class="bg-pink-100 text-pink-600 rounded-full p-3">
+                📏
+              </span>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-pink-800 mb-2">Extensions de Uñas</h3>
+              <p class="text-gray-600 mb-4">
+                Alargamiento y refuerzo con acrílico o gel para lograr la longitud y forma deseada.
+              </p>
+              <div class="flex items-baseline">
+                <span class="text-pink-600 font-bold mr-2">$30.000</span>
+                <span class="text-gray-500 text-sm">75 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicio 4: Nail Art -->
+        <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+              <span class="bg-pink-100 text-pink-600 rounded-full p-3">
+                🎨
+              </span>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-pink-800 mb-2">Nail Art</h3>
+              <p class="text-gray-600 mb-4">
+                Diseños artísticos personalizados: desde clásicos hasta tendencia, incluyendo strass, pegatinas y pintura a mano alzada.
+              </p>
+              <div class="flex items-baseline">
+                <span class="text-pink-600 font-bold mr-2">Desde $20.000</span>
+                <span class="text-gray-500 text-sm">60-90 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicio 5: Reparación de Uñas -->
+        <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+              <span class="bg-pink-100 text-pink-600 rounded-full p-3">
+                💪
+              </span>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-pink-800 mb-2">Reparación de Uñas</h3>
+              <p class="text-gray-600 mb-4">
+                Tratamiento y reconstrucción de uñas dañadas o quebradas para devolverles salud y fuerza.
+              </p>
+              <div class="flex items-baseline">
+                <span class="text-pink-600 font-bold mr-2">$18.000</span>
+                <span class="text-gray-500 text-sm">40 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicio 6: Pedicura Spa -->
+        <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+              <span class="bg-pink-100 text-pink-600 rounded-full p-3">
+                👣
+              </span>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-pink-800 mb-2">Pedicura Spa</h3>
+              <p class="text-gray-600 mb-4">
+                Tratamiento completo para pies con exfoliación, masaje, hidratación y cuidado de cutículas.
+              </p>
+              <div class="flex items-baseline">
+                <span class="text-pink-600 font-bold mr-2">$22.000</span>
+                <span class="text-gray-500 text-sm">50 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

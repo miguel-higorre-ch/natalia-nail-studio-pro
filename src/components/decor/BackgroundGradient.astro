@@ -1,0 +1,57 @@
+---
+interface Props {
+  animated?: boolean;
+}
+
+const { animated = true } = Astro.props;
+---
+
+<div
+  class:list={['background-gradient', { 'background-gradient--static': !animated }]}
+  aria-hidden="true"
+>
+  {animated && (
+    <div class="aurora-parallax">
+      <div class="aurora-blob aurora-blob--one"></div>
+      <div class="aurora-blob aurora-blob--two"></div>
+      <div class="aurora-blob aurora-blob--three"></div>
+      <div class="aurora-blob aurora-blob--four"></div>
+    </div>
+  )}
+</div>
+
+{animated && (
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+
+    const updateParallax = () => {
+      frame = 0;
+      if (reduceMotion.matches) return;
+
+      const offset = Math.min(window.scrollY * 0.035, 60);
+      document.documentElement.style.setProperty('--aurora-parallax', `${-offset}px`);
+    };
+
+    const scheduleParallax = () => {
+      if (!frame && !reduceMotion.matches) {
+        frame = window.requestAnimationFrame(updateParallax);
+      }
+    };
+
+    const clearParallax = () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
+      document.documentElement.style.setProperty('--aurora-parallax', '0px');
+    };
+
+    window.addEventListener('scroll', scheduleParallax, { passive: true });
+    reduceMotion.addEventListener('change', () => {
+      if (reduceMotion.matches) clearParallax();
+      else scheduleParallax();
+    });
+
+    if (reduceMotion.matches) clearParallax();
+    else updateParallax();
+  </script>
+)}

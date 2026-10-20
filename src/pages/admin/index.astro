@@ -1,0 +1,101 @@
+---
+// src/pages/admin/index.astro
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout>
+  <main class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <header class="mb-6 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-pink-800">
+          Panel de Administración
+        </h1>
+        <nav class="space-x-4">
+          <a href="/admin/bookings" class="text-pink-600 hover:text-pink-800 transition-colors">
+            Citas
+          </a>
+          <a href="/admin/clients" class="text-pink-600 hover:text-pink-800 transition-colors">
+            Clientes
+          </a>
+          <a href="/admin/services" class="text-pink-600 hover:text-pink-800 transition-colors">
+            Servicios
+          </a>
+          <a href="/admin/portfolio" class="text-pink-600 hover:text-pink-800 transition-colors">
+            Portafolio
+          </a>
+        </nav>
+      </header>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <!-- Estadísticas -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-xl font-bold text-pink-800 mb-4">
+            Panel de control
+          </h2>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="text-center p-4 bg-pink-50 rounded-lg">
+              <p class="text-sm text-gray-500">Citas de hoy</p>
+              <p class="text-2xl font-bold text-pink-800">12</p>
+            </div>
+            <div class="text-center p-4 bg-pink-50 rounded-lg">
+              <p class="text-sm text-gray-500">Próximas citas</p>
+              <p class="text-2xl font-bold text-pink-800">24</p>
+            </div>
+            <div class="text-center p-4 bg-pink-50 rounded-lg">
+              <p class="text-sm text-gray-500">Total clientes</p>
+              <p class="text-2xl font-bold text-pink-800">156</p>
+            </div>
+            <div class="text-center p-4 bg-pink-50 rounded-lg">
+              <p class="text-sm text-gray-500">Ingresos mensuales</p>
+              <p class="text-2xl font-bold text-pink-800">$2.4M</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actividad reciente -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-xl font-bold text-pink-800 mb-4">
+            Actividad reciente
+          </h2>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <div class="flex-shrink-0">
+                <span class="bg-pink-100 text-pink-600 rounded-full p-2">
+                  📅
+                </span>
+              </div>
+              <div>
+                <p class="font-medium">Nueva cita confirmada</p>
+                <p class="text-sm text-gray-500">María González - Manicura de Gel</p>
+                <p class="text-xs text-gray-400">Hace 2 horas</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="flex-shrink-0">
+                <span class="bg-pink-100 text-pink-600 rounded-full p-2">
+                  💅
+                </span>
+              </div>
+              <div>
+                <p class="font-medium">Nuevo trabajo añadido al portafolio</p>
+                <p class="text-sm text-gray-500">Diseño floral primaveral</p>
+                <p class="text-xs text-gray-400">Hace 4 horas</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="flex-shrink-0">
+                <span class="bg-pink-100 text-pink-600 rounded-full p-2">
+                  👤
+                </span>
+              </div>
+              <div>
+                <p class="font-medium">Nuevo cliente registrado</p>
+                <p class="text-sm text-gray-500">Ana López</p>
+                <p class="text-xs text-gray-400">Hace 6 horas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

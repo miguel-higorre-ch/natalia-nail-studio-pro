@@ -1,0 +1,253 @@
+.background-gradient,
+.floating-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+html body {
+  background: var(--bg-deep);
+}
+
+.background-gradient {
+  z-index: -2;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--bg-deep) 0%,
+    var(--bg-mid) 50%,
+    var(--bg-deep) 100%
+  );
+}
+
+.aurora-parallax {
+  position: absolute;
+  inset: -3%;
+  transform: translate3d(0, var(--aurora-parallax), 0);
+}
+
+.aurora-blob {
+  position: absolute;
+  width: min(58vw, 760px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.36;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--pink-500) 45%, transparent) 0%,
+    color-mix(in srgb, var(--pink-300) 26%, transparent) 36%,
+    transparent 72%
+  );
+}
+
+.aurora-blob--one {
+  top: -28%;
+  left: -20%;
+  animation: aurora-drift-one 28s ease-in-out -8s infinite alternate;
+}
+
+.aurora-blob--two {
+  top: 4%;
+  right: -23%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--bg-glow) 54%, transparent) 0%,
+    color-mix(in srgb, var(--pink-500) 25%, transparent) 42%,
+    transparent 72%
+  );
+  animation: aurora-drift-two 34s ease-in-out -17s infinite alternate;
+}
+
+.aurora-blob--three {
+  bottom: -35%;
+  left: 15%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--pink-300) 36%, transparent) 0%,
+    color-mix(in srgb, var(--bg-glow) 33%, transparent) 40%,
+    transparent 72%
+  );
+  animation: aurora-drift-three 25s ease-in-out -12s infinite alternate;
+}
+
+.aurora-blob--four {
+  top: 34%;
+  left: 43%;
+  width: min(42vw, 560px);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--pink-500) 32%, transparent) 0%,
+    transparent 70%
+  );
+  animation: aurora-drift-four 31s ease-in-out -5s infinite alternate;
+}
+
+.background-gradient--static .aurora-parallax {
+  display: none;
+}
+
+.floating-decor {
+  z-index: -1;
+  overflow: clip;
+}
+
+.decor-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.decor-icon {
+  position: absolute;
+  left: var(--decor-left);
+  top: var(--decor-top);
+  width: var(--decor-size);
+  height: var(--decor-size);
+  overflow: visible;
+  color: var(--pink-300);
+  fill: none;
+  stroke: var(--pink-100);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.23;
+  filter: drop-shadow(0 0 5px rgb(255 122 179 / 12%));
+  pointer-events: none;
+  will-change: transform;
+  animation: decor-drift var(--decor-duration) ease-in-out var(--decor-delay) infinite;
+}
+
+.decor-icon--heart,
+.decor-icon--heart-filled {
+  animation-name: decor-heart-float;
+}
+
+.decor-icon--heart-filled {
+  fill: var(--pink-300);
+  stroke: var(--pink-300);
+  opacity: 0.18;
+}
+
+.decor-icon--clover {
+  animation-name: decor-clover-sway;
+}
+
+.decor-icon--scissors {
+  animation-name: decor-scissors-drift;
+}
+
+.decor-icon use {
+  transform-box: fill-box;
+}
+
+.scissor-blade {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+}
+
+.scissor-blade--upper {
+  animation: scissors-snip-upper 9s ease-in-out var(--decor-delay) infinite;
+}
+
+.scissor-blade--lower {
+  animation: scissors-snip-lower 9s ease-in-out var(--decor-delay) infinite;
+}
+
+html.decor-page-hidden .background-gradient *,
+html.decor-page-hidden .decor-icon,
+html.decor-page-hidden .scissor-blade {
+  animation-play-state: paused !important;
+}
+
+html.decor-frozen .background-gradient *,
+html.decor-frozen .decor-icon,
+html.decor-frozen .scissor-blade {
+  animation-play-state: paused !important;
+}
+
+html.low-power-decor .decor-icon:nth-of-type(n + 6) {
+  display: none;
+}
+
+@keyframes aurora-drift-one {
+  from { transform: translate3d(-1%, -2%, 0) scale(0.96); }
+  to { transform: translate3d(5%, 4%, 0) scale(1.06); }
+}
+
+@keyframes aurora-drift-two {
+  from { transform: translate3d(2%, -1%, 0) scale(1); }
+  to { transform: translate3d(-5%, 5%, 0) scale(1.08); }
+}
+
+@keyframes aurora-drift-three {
+  from { transform: translate3d(-3%, 2%, 0) scale(0.98); }
+  to { transform: translate3d(4%, -4%, 0) scale(1.05); }
+}
+
+@keyframes aurora-drift-four {
+  from { transform: translate3d(2%, 4%, 0) scale(0.9); }
+  to { transform: translate3d(-4%, -3%, 0) scale(1.05); }
+}
+
+@keyframes decor-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--decor-rotation)); }
+  50% { transform: translate3d(0, -7px, 0) rotate(calc(var(--decor-rotation) + 8deg)); }
+}
+
+@keyframes decor-heart-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--decor-rotation)) scale(1); }
+  50% { transform: translate3d(0, -8px, 0) rotate(var(--decor-rotation)) scale(1.12); }
+}
+
+@keyframes decor-clover-sway {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--decor-rotation)); }
+  50% { transform: translate3d(0, -5px, 0) rotate(calc(var(--decor-rotation) + 15deg)); }
+}
+
+@keyframes decor-scissors-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--decor-rotation)); }
+  50% { transform: translate3d(0, -6px, 0) rotate(calc(var(--decor-rotation) - 8deg)); }
+}
+
+@keyframes scissors-snip-upper {
+  0%, 89%, 100% { transform: rotate(0); }
+  93%, 97% { transform: rotate(14deg); }
+}
+
+@keyframes scissors-snip-lower {
+  0%, 89%, 100% { transform: rotate(0); }
+  93%, 97% { transform: rotate(-14deg); }
+}
+
+@media (max-width: 767px) {
+  .aurora-blob {
+    width: 68vw;
+    filter: blur(58px);
+    opacity: 0.3;
+  }
+
+  .aurora-blob--four {
+    display: none;
+  }
+
+  .decor-icon--mobile-hidden {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-parallax,
+  .aurora-blob,
+  .decor-icon,
+  .scissor-blade {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .aurora-parallax {
+    transform: none;
+  }
+}

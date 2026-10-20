@@ -1,0 +1,65 @@
+---
+// src/pages/sobre-natalia.astro
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+  <main class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <header class="mb-12 text-center">
+        <h2 class="text-3xl font-bold text-pink-800 mb-4">
+          Sobre Natalia
+        </h2>
+        <p class="text-lg text-gray-600">
+          Pasión y profesionalismo en cada detalle
+        </p>
+      </header>
+
+      <div class="grid gap-10 md:grid-cols-2">
+        <!-- Imagen -->
+        <div class="flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1605952819287-4ebe47b38e3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDI0NzB8MXwxfHJhbmRvbXx8fHx8fHx8fDE2NTY2Nzg1NzY&ixlib=rb-1.2.1&q=80&w=400" alt="Natalia trabajando en diseño de uñas" class="rounded-lg shadow-md w-full max-w-xs">
+        </div>
+
+        <!-- Texto -->
+        <div class="space-y-6">
+          <p class="text-gray-700 leading-relaxed">
+            Natalia es una artista de uñas certificada con más de 5 años de experiencia en el diseño y cuidado de uñas. Su pasión por la creatividad y su atención al detalle la han convertido en una de las manicuristas más buscadas de la zona. Cada cliente recibe un tratamiento personalizado, utilizando solo productos de alta calidad para asegurar resultados duraderos y hermosos.
+          </p>
+
+          <h3 class="text-2xl font-bold text-pink-800 mb-4">
+            Especialidades
+          </h3>
+
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <span class="text-pink-600 flex-shrink-0">•</span>
+              <span class="ml-3">Diseño de uñas de gel</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-pink-600 flex-shrink-0">•</span>
+              <span class="ml-3">Extensiones y refuerzos</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-pink-600 flex-shrink-0">•</span>
+              <span class="ml-3">Nail art artístico y personalizado</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-pink-600 flex-shrink-0">•</span>
+              <span class="ml-3">Cuidado y tratamiento de uñas naturales</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-pink-600 flex-shrink-0">•</span>
+              <span class="ml-3">Pedicura spa y terapéutica</span>
+            </li>
+          </ul>
+
+          <div class="mt-8 text-center">
+            <a href="/reservar" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-lg transition-colors transform hover:scale-105">
+              Reserva tu cita con Natalia
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

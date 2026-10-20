@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "codegraph": {
+      "type": "stdio",
+      "command": "codegraph",
+      "args": [
+        "serve",
+        "--mcp",
+        "--path",
+        "D:\\Cursos\\11-personal-projects\\nails-by-natalia\\natali-nail-studio"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+:root {
+  --bg-deep: #3d0a24;
+  --bg-mid: #6b0f3a;
+  --bg-glow: #8f1148;
+  --pink-500: #ff2d87;
+  --pink-300: #ff7ab3;
+  --pink-100: #ffd3e6;
+  --glass-bg: rgb(255 255 255 / 7%);
+  --glass-border: rgb(255 255 255 / 14%);
+  --text: #fff;
+  --text-muted: rgb(255 255 255 / 72%);
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+  --shadow-glow: 0 10px 40px -10px rgb(255 45 135 / 55%);
+  --aurora-parallax: 0px;
+}
+
+html,
+body {
+  background: var(--bg-deep);
+}
+
+body {
+  isolation: isolate;
+}

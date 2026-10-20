@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="styleguide">
+    <header>
+      <span class="eyebrow">Guía visual</span>
+      <h1>Iconos decorativos</h1>
+      <p>Vista previa de los iconos y sus animaciones en el sitio.</p>
+    </header>
+
+    <label class="freeze-control">
+      <input type="checkbox" id="freeze-decor" />
+      <span>Congelar animaciones</span>
+    </label>
+
+    <section class="icon-examples" aria-label="Muestras de iconos decorativos">
+      <article class="icon-card">
+        <svg
+          class="decor-icon decor-icon--scissors"
+          style="--decor-left:0;--decor-top:0;--decor-size:40px;--decor-rotation:0deg;--decor-delay:-3s;--decor-duration:9s;"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="#decor-scissors-upper" class="scissor-blade scissor-blade--upper" />
+          <use href="#decor-scissors-lower" class="scissor-blade scissor-blade--lower" />
+        </svg>
+        <h2>Tijeras</h2>
+        <p>Deriva y hace un corte suave cada nueve segundos.</p>
+      </article>
+
+      <article class="icon-card">
+        <svg
+          class="decor-icon decor-icon--heart"
+          style="--decor-left:0;--decor-top:0;--decor-size:40px;--decor-rotation:0deg;--decor-delay:-3s;--decor-duration:8s;"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="#decor-heart-outline" />
+        </svg>
+        <h2>Corazones</h2>
+        <p>Flotan suavemente con un pulso ligero.</p>
+      </article>
+
+      <article class="icon-card">
+        <svg
+          class="decor-icon decor-icon--clover"
+          style="--decor-left:0;--decor-top:0;--decor-size:40px;--decor-rotation:0deg;--decor-delay:-6s;--decor-duration:12s;"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="#decor-clover" />
+        </svg>
+        <h2>Tréboles</h2>
+        <p>Se balancean y giran lentamente.</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const freezeControl = document.querySelector<HTMLInputElement>('#freeze-decor');
+
+    freezeControl?.addEventListener('change', () => {
+      document.documentElement.classList.toggle('decor-frozen', freezeControl.checked);
+    });
+  </script>
+
+  <style>
+    .styleguide {
+      width: min(100% - 2rem, 960px);
+      margin: 0 auto;
+      padding: 5rem 0 8rem;
+      color: var(--text);
+    }
+
+    .styleguide header {
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .styleguide h1 {
+      margin: 0.8rem 0;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .styleguide p {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .freeze-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+    }
+
+    .icon-examples {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .icon-card {
+      min-height: 210px;
+      padding: 1.25rem;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-card);
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+    }
+
+    .icon-card :global(.decor-icon) {
+      position: static;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .icon-card h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .icon-card p {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 640px) {
+      .icon-examples {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .icon-card :global(.decor-icon),
+      .icon-card :global(.scissor-blade) {
+        animation: none !important;
+      }
+    }
+  </style>
+</Layout>

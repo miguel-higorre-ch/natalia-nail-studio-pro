@@ -1,0 +1,100 @@
+---
+// src/pages/portafolio.astro
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+  <main class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <header class="mb-12 text-center">
+        <h2 class="text-3xl font-bold text-pink-800 mb-4">
+          Portafolio
+        </h2>
+        <p class="text-lg text-gray-600">
+          Trabajos recientes de Natalia
+        </p>
+      </header>
+
+      <!-- Portfolio Filters -->
+      <div class="mb-10 flex flex-wrap justify-center gap-3">
+        <button class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded transition-colors">
+          Todo
+        </button>
+        <button class="border border-pink-600 hover:bg-pink-50 hover:text-pink-800 text-pink-600 font-bold py-2 px-4 rounded transition-colors">
+          Gel
+        </button>
+        <button class="border border-pink-600 hover:bg-pink-50 hover:text-pink-800 text-pink-600 font-bold py-2 px-4 rounded transition-colors">
+          Acrylico
+        </button>
+        <button class="border border-pink-600 hover:bg-pink-50 hover:text-pink-800 text-pink-600 font-bold py-2 px-4 rounded transition-colors">
+          Nail Art
+        </button>
+        <button class="border border-pink-600 hover:bg-pink-50 hover:text-pink-800 text-pink-600 font-bold py-2 px-4 rounded transition-colors">
+          Ocasiones especiales
+        </button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Portfolio Item 1 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDI0NzB8MXwxfHJhbmRvbXx8fHx8fHx8fDE2NTY2Nzg1MzY&ixlib=rb-1.2.1&q=80&w=400" alt="Diseño de uñas gel" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-pink-800 mb-2">Diseño de uñas gel</h3>
+            <p class="text-gray-600 text-sm">Uñas de gel con efecto ombre y detalles brillantes</p>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 2 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1606052546585-047b494cc0ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDI0NzB8MXwxfHJhbmRvbXx8fHx8fHx8fDE2NTY2Nzg1MzY&ixlib=rb-1.2.1&q=80&w=400" alt="Nail art floral" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-pink-800 mb-2">Nail art floral</h3>
+            <p class="text-gray-600 text-sm">Diseño floral delicado en tonos pastel</p>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 3 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1596456412080-883bb04eb5b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDI0NzB8MXwxfHJhbmRvbXx8fHx8fHx8fDE2NTY2Nzg1MzY&ixlib=rb-1.2.1&q=80&w=400" alt="Extensions de uñas" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-pink-800 mb-2">Extensions de uñas</h3>
+            <p class="text-gray-600 text-sm">Extensions con forma almendrada y acabado natural</p>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 4 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1616474072358-8bab7bd7ec90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDI0NzB8MXwxfHJhbmRvbXx8fHx8fHx8fDE2NTY2Nzg1MzY&ixlib=rb-1.2.1&q=80&w=400" alt="Manicura francesa" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-pink-800 mb-2">Manicura francesa</h3>
+            <p class="text-gray-600 text-sm">Clásica manicura francesa con toque moderno</p>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 5 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1620249523088-b0e5541cf435?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDI0NzB8MXwxfHJhbmRvbXx8fHx8fHx8fDE2NTY2Nzg1MzY&ixlib=rb-1.2.1&q=80&w=400" alt="Uñas decoradas" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-pink-800 mb-2">Uñas decoradas</h3>
+            <p class="text-gray-600 text-sm">Diseño geométrico en tonos dorados y nude</p>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 6 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1617784302421-96c034132a4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDI0NzB8MXwxfHJhbmRvbXx8fHx8fHx8fDE2NTY2Nzg1MzY&ixlib=rb-1.2.1&q=80&w=400" alt="Pedicura spa" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-pink-800 mb-2">Pedicura spa</h3>
+            <p class="text-gray-600 text-sm">Tratamiento completo para pies con masaje relajante</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="#" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-lg transition-colors transform hover:scale-105">
+          Ver todo el portafolio
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

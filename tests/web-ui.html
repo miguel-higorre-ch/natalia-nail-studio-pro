@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Luxe Nails &amp; Spa — Beautiful Nails, Confident You</title>
+<!-- Google Fonts: Inter and Playfair Display for editorial luxury aesthetic -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#14010a',
+              burgundy: '#290314',
+              wine: '#440523',
+              crimson: '#83083d',
+              pink: '#ff1f71',
+              neon: '#ff3d8b',
+              glow: '#ff6ba8',
+              card: 'rgba(56, 7, 33, 0.45)',
+              cardBorder: 'rgba(255, 61, 139, 0.22)'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            'neon-sm': '0 0 15px rgba(255, 31, 113, 0.35)',
+            'neon-md': '0 0 25px rgba(255, 31, 113, 0.5)',
+            'neon-lg': '0 0 45px rgba(255, 31, 113, 0.65)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Framer-Motion-like Keyframes and Glassmorphism Styles -->
+<style data-purpose="motion-and-effects">
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.75;
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes floatOrb {
+      0%, 100% {
+        transform: translate(0px, 0px);
+      }
+      50% {
+        transform: translate(15px, -20px);
+      }
+    }
+
+    @keyframes subtleFloat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .animate-float-slow {
+      animation: floatOrb 12s ease-in-out infinite;
+    }
+
+    .animate-glow-pulse {
+      animation: pulseGlow 5s ease-in-out infinite;
+    }
+
+    .animate-subtle-bounce {
+      animation: subtleFloat 4s ease-in-out infinite;
+    }
+
+    .glass-card {
+      background: rgba(45, 4, 25, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 61, 139, 0.25);
+    }
+
+    .glass-card-interactive {
+      background: rgba(48, 5, 27, 0.5);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 61, 139, 0.22);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card-interactive:active {
+      transform: scale(0.98);
+      border-color: rgba(255, 107, 168, 0.6);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Custom Hide Scrollbar for iOS touch experience */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#130109] text-rose-100 font-sans selection:bg-pink-600 selection:text-white antialiased overflow-x-hidden min-h-screen pb-24 relative">
+<!-- BEGIN: Ambient Background Glow Orbs -->
+<div aria-hidden="true" class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+<!-- Top Hero Glow -->
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] h-[340px] rounded-full bg-gradient-to-br from-pink-600/40 via-rose-700/30 to-purple-900/10 blur-[90px] animate-glow-pulse"></div>
+<!-- Mid Services Glow -->
+<div class="absolute top-[35%] -left-20 w-[280px] h-[280px] rounded-full bg-pink-600/25 blur-[100px] animate-float-slow"></div>
+<!-- Gallery & Pricing Glow -->
+<div class="absolute top-[65%] -right-16 w-[300px] h-[300px] rounded-full bg-rose-600/20 blur-[100px] animate-glow-pulse" style="animation-delay: -2.5s;"></div>
+<!-- Subtle Grid Overlay -->
+<div class="absolute inset-0 bg-[radial-gradient(rgba(255,61,139,0.06)_1px,transparent_1px)] [background-size:24px_24px] opacity-70"></div>
+</div>
+<!-- END: Ambient Background Glow Orbs -->
+<!-- BEGIN: Floating iOS Navigation Dock -->
+<nav class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-sm" data-purpose="floating-bottom-dock">
+<div class="glass-card rounded-full px-4 py-2.5 shadow-neon-sm flex items-center justify-between border border-pink-500/30 shadow-2xl">
+<!-- Home Icon -->
+<a aria-label="Home" class="p-2.5 rounded-full text-pink-200 hover:text-white hover:bg-pink-600/30 active:scale-90 transition-all flex flex-col items-center" href="#hero">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+<!-- Services Icon -->
+<a aria-label="Services" class="p-2.5 rounded-full text-pink-200 hover:text-white hover:bg-pink-600/30 active:scale-90 transition-all flex flex-col items-center" href="#services">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10m3.363 4.121a3 3 0 10-4.242-4.242" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+<!-- Gallery Icon -->
+<a aria-label="Gallery" class="p-2.5 rounded-full text-pink-200 hover:text-white hover:bg-pink-600/30 active:scale-90 transition-all flex flex-col items-center" href="#gallery">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+<!-- Pricing Icon -->
+<a aria-label="Pricing" class="p-2.5 rounded-full text-pink-200 hover:text-white hover:bg-pink-600/30 active:scale-90 transition-all flex flex-col items-center" href="#pricing">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+<!-- Booking / Call CTA Icon -->
+<a aria-label="Book Now" class="p-2.5 rounded-full bg-gradient-to-tr from-pink-600 to-rose-400 text-white shadow-neon-sm active:scale-90 transition-all flex items-center justify-center" href="#contact">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</a>
+</div>
+</nav>
+<!-- END: Floating iOS Navigation Dock -->
+<!-- BEGIN: Top Header Bar -->
+<header class="sticky top-0 z-40 px-5 pt-4 pb-3 flex items-center justify-between backdrop-blur-md bg-[#18020d]/80 border-b border-pink-900/30">
+<div class="flex items-center space-x-2">
+<div class="w-9 h-9 rounded-full bg-gradient-to-tr from-pink-600 to-pink-400 flex items-center justify-center shadow-neon-sm">
+<span class="text-white font-bold text-sm tracking-wider">LN</span>
+</div>
+<div>
+<span class="text-base font-bold tracking-tight text-white block leading-tight">LUXE NAILS</span>
+<span class="text-[10px] text-pink-400 tracking-widest font-semibold uppercase">Salon &amp; Spa</span>
+</div>
+</div>
+<!-- Top Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-950/70 border border-pink-500/40 text-[11px] font-medium text-pink-300 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-ping"></span>
+      Open Today
+    </div>
+</header>
+<!-- END: Top Header Bar -->
+<!-- BEGIN: Main Content -->
+<main class="px-4 space-y-12 pt-3 relative z-10 max-w-md mx-auto">
+<!-- BEGIN: Hero Section -->
+<section class="pt-6 pb-2 text-center relative" data-purpose="hero-section" id="hero">
+<!-- Luxury Tag -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-900/40 border border-pink-500/30 text-xs text-pink-200 mb-5 shadow-sm">
+<span class="text-pink-400">✨</span>
+<span class="font-medium tracking-wide">Premium Nail Salon &amp; Spa</span>
+</div>
+<!-- Main Headline -->
+<h1 class="text-3.5xl font-extrabold tracking-tight text-white mb-3 text-[34px] leading-[1.15]">
+        Beautiful Nails,<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-300 to-pink-500">
+          Confident You
+        </span>
+</h1>
+<!-- Subtitle -->
+<p class="text-rose-200/80 text-sm leading-relaxed px-2 font-normal mb-7 max-w-xs mx-auto">
+        Experience luxury nail care with our expert artists. From classic manicures to stunning custom nail art, we bring your nail dreams to life.
+      </p>
+<!-- Primary Action Buttons -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3 px-3">
+<a class="w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-pink-600 via-pink-500 to-rose-500 text-white font-semibold text-sm shadow-neon-md hover:shadow-neon-lg active:scale-95 transition-all duration-300 flex items-center justify-center gap-2" href="#contact">
+<span>Book Appointment</span>
+<span class="text-white text-base">♡</span>
+</a>
+<a class="w-full py-3.5 px-6 rounded-full glass-pill text-pink-200 font-medium text-sm hover:bg-white/10 active:scale-95 transition-all text-center" href="#gallery">
+          View Gallery
+        </a>
+</div>
+<!-- Quick Metrics Counter Strip -->
+<div class="mt-8 grid grid-cols-4 gap-1 p-2 rounded-2xl glass-card text-center border border-pink-500/20" data-purpose="metrics-counter">
+<div class="py-1">
+<p class="text-base font-extrabold text-white">1000+</p>
+<p class="text-[10px] text-pink-300/80 uppercase tracking-tighter">Clients</p>
+</div>
+<div class="py-1 border-l border-pink-500/20">
+<p class="text-base font-extrabold text-white">98%+</p>
+<p class="text-[10px] text-pink-300/80 uppercase tracking-tighter">Rating</p>
+</div>
+<div class="py-1 border-l border-pink-500/20">
+<p class="text-base font-extrabold text-white">50+</p>
+<p class="text-[10px] text-pink-300/80 uppercase tracking-tighter">Artists</p>
+</div>
+<div class="py-1 border-l border-pink-500/20">
+<p class="text-base font-extrabold text-white">5+ Yrs</p>
+<p class="text-[10px] text-pink-300/80 uppercase tracking-tighter">History</p>
+</div>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Services Showcase Card -->
+<section class="space-y-4" data-purpose="services-section" id="services">
+<!-- Section Header -->
+<div class="text-center space-y-1">
+<span class="text-[11px] font-semibold tracking-wider text-pink-400 uppercase">Our Services</span>
+<h2 class="text-2xl font-bold text-white tracking-tight">Expert Nail Care</h2>
+<p class="text-xs text-rose-200/70">Precision &amp; beauty delivered in every service</p>
+</div>
+<!-- Main Feature Card -->
+<div class="glass-card rounded-3xl p-5 border border-pink-500/30 overflow-hidden relative shadow-glass">
+<div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-pink-950 via-[#3a0621] to-pink-900/40 relative overflow-hidden flex items-center justify-center border border-pink-500/20 mb-4">
+<!-- Stylized Mock Illustration inside Card -->
+<div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-pink-500/40 via-transparent to-transparent"></div>
+<div class="text-center p-4 relative z-10">
+<span class="inline-block p-3 rounded-full bg-pink-600/30 border border-pink-400/30 text-2xl mb-2 animate-subtle-bounce">💅</span>
+<h3 class="text-white font-serif italic text-lg tracking-wide">Signature Haute Manicure</h3>
+<p class="text-xs text-pink-200/80 mt-1">Artisan sculpting, organic cuticle care &amp; gel polish</p>
+</div>
+</div>
+<!-- Badges Grid inside Service Card -->
+<div class="grid grid-cols-2 gap-3 pt-1">
+<!-- Hygiene Badge -->
+<div class="p-3 rounded-xl bg-pink-950/60 border border-pink-500/25 flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-pink-400 mb-1">
+<svg class="w-4 h-4 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-xs font-bold text-white">Hygiene First</span>
+</div>
+<p class="text-[11px] text-rose-200/70 leading-snug">100% Hospital-grade sterilized tools &amp; disposable files</p>
+</div>
+<!-- Quality Badge -->
+<div class="p-3 rounded-xl bg-pink-950/60 border border-pink-500/25 flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-pink-400 mb-1">
+<svg class="w-4 h-4 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-xs font-bold text-white">Top Brands</span>
+</div>
+<p class="text-[11px] text-rose-200/70 leading-snug">OPI, Bio Seaweed Gel &amp; cruelty-free vegan polishes</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Services Showcase Card -->
+<!-- BEGIN: Gallery Section -->
+<section class="space-y-4" data-purpose="gallery-showcase" id="gallery">
+<!-- Section Header -->
+<div class="text-center space-y-1">
+<span class="text-[11px] font-semibold tracking-wider text-pink-400 uppercase">Creative Showcase</span>
+<h2 class="text-2xl font-bold text-white tracking-tight">Our Gallery</h2>
+<p class="text-xs text-rose-200/70">Browse through our collection of exquisite nail designs</p>
+</div>
+<!-- Mobile Gallery 2-Column Grid -->
+<div class="grid grid-cols-2 gap-3" data-purpose="gallery-grid">
+<!-- Gallery Item 1 -->
+<div class="glass-card rounded-2xl p-2 group hover:border-pink-400 transition-all duration-300">
+<div class="w-full h-36 rounded-xl bg-gradient-to-br from-pink-900 to-rose-950 flex flex-col items-center justify-center p-3 text-center border border-pink-500/20 relative overflow-hidden">
+<span class="text-3xl mb-1 group-hover:scale-110 transition-transform">✨</span>
+<span class="text-xs font-semibold text-white">Golden Amber Gloss</span>
+<span class="text-[10px] text-pink-300">Autumn Gel Art</span>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="glass-card rounded-2xl p-2 group hover:border-pink-400 transition-all duration-300">
+<div class="w-full h-36 rounded-xl bg-gradient-to-br from-purple-950 to-pink-900 flex flex-col items-center justify-center p-3 text-center border border-pink-500/20 relative overflow-hidden">
+<span class="text-3xl mb-1 group-hover:scale-110 transition-transform">💎</span>
+<span class="text-xs font-semibold text-white">Chrome Velvet 3D</span>
+<span class="text-[10px] text-pink-300">Rhinestone Inlay</span>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="glass-card rounded-2xl p-2 group hover:border-pink-400 transition-all duration-300">
+<div class="w-full h-36 rounded-xl bg-gradient-to-br from-rose-900 to-pink-950 flex flex-col items-center justify-center p-3 text-center border border-pink-500/20 relative overflow-hidden">
+<span class="text-3xl mb-1 group-hover:scale-110 transition-transform">🌸</span>
+<span class="text-xs font-semibold text-white">Blushing Ombré</span>
+<span class="text-[10px] text-pink-300">French Minimalist</span>
+</div>
+</div>
+<!-- Gallery Item 4 -->
+<div class="glass-card rounded-2xl p-2 group hover:border-pink-400 transition-all duration-300">
+<div class="w-full h-36 rounded-xl bg-gradient-to-br from-[#4a0729] to-[#250314] flex flex-col items-center justify-center p-3 text-center border border-pink-500/20 relative overflow-hidden">
+<span class="text-3xl mb-1 group-hover:scale-110 transition-transform">🖤</span>
+<span class="text-xs font-semibold text-white">Obsidian Metallic</span>
+<span class="text-[10px] text-pink-300">Stiletto Acrylic</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Gallery Section -->
+<!-- BEGIN: About Us Section -->
+<section class="glass-card rounded-3xl p-6 border border-pink-500/30 text-center relative overflow-hidden" data-purpose="about-section" id="about">
+<!-- Glow effect -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-600/20 rounded-full blur-2xl"></div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-950/60 border border-pink-500/30 text-[10px] uppercase font-bold text-pink-300 mb-3">
+        Our Story
+      </div>
+<h2 class="text-2xl font-bold text-white mb-2 tracking-tight">About Us</h2>
+<p class="text-xs font-medium text-pink-300 mb-5">Where artistry meets perfection in every nail design</p>
+<!-- Circular Avatar Frame with Accent Border -->
+<div class="relative w-32 h-32 mx-auto mb-5">
+<div class="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500 to-rose-400 p-[2px] shadow-neon-sm animate-glow-pulse">
+<div class="w-full h-full rounded-full bg-[#200311] flex items-center justify-center overflow-hidden">
+<!-- Nail Artist Stylized Glyph -->
+<div class="text-4xl">💅🏼</div>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-white mb-2 font-serif">Crafting Beauty Since 2018</h3>
+<p class="text-xs text-rose-200/80 leading-relaxed max-w-xs mx-auto mb-4">
+        Founded with a passion for transformative nail art, Luxe Nails has grown into a tranquil sanctuary. Our master nail artists craft bespoke designs personalized to your tone, lifestyle, and aesthetic.
+      </p>
+<!-- Feature Bullet Pills -->
+<div class="flex flex-wrap justify-center gap-2">
+<span class="px-3 py-1 rounded-full bg-pink-950/80 border border-pink-500/30 text-[11px] text-pink-200">
+          ✓ Certified Technicians
+        </span>
+<span class="px-3 py-1 rounded-full bg-pink-950/80 border border-pink-500/30 text-[11px] text-pink-200">
+          ✓ Vegan &amp; Non-Toxic
+        </span>
+</div>
+</section>
+<!-- END: About Us Section -->
+<!-- BEGIN: Pricing Section -->
+<section class="space-y-4" data-purpose="pricing-section" id="pricing">
+<!-- Section Header -->
+<div class="text-center space-y-1">
+<span class="text-[11px] font-semibold tracking-wider text-pink-400 uppercase">Transparent Pricing</span>
+<h2 class="text-2xl font-bold text-white tracking-tight">Affordable Luxury</h2>
+<p class="text-xs text-rose-200/70">Premium nail care at prices that pamper your nails &amp; wallet</p>
+</div>
+<!-- Pricing Cards Stack -->
+<div class="space-y-4">
+<!-- Card 1: Popular Plan (Highlighted) -->
+<div class="glass-card rounded-3xl p-5 border-2 border-pink-500 relative shadow-neon-sm" data-purpose="pricing-card-popular">
+<!-- Popular Ribbon -->
+<div class="absolute -top-3 right-6 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-[10px] font-black uppercase tracking-wider px-3 py-0.5 rounded-full shadow-md">
+            Most Popular
+          </div>
+<div class="flex justify-between items-baseline mb-3">
+<div>
+<h3 class="text-lg font-bold text-white">Premium Glam</h3>
+<p class="text-xs text-pink-300">Gel artistry &amp; rejuvenation</p>
+</div>
+<div class="text-right">
+<span class="text-2xl font-black text-white">$45</span>
+<span class="text-[11px] text-rose-300">/session</span>
+</div>
+</div>
+<!-- Feature List -->
+<ul class="text-xs space-y-2 text-rose-100/90 mb-5 border-t border-pink-500/20 pt-3">
+<li class="flex items-center gap-2">
+<span class="text-pink-400 font-bold">✓</span> Full Cuticle &amp; Shape Treatment
+            </li>
+<li class="flex items-center gap-2">
+<span class="text-pink-400 font-bold">✓</span> Long-lasting Gel Polish
+            </li>
+<li class="flex items-center gap-2">
+<span class="text-pink-400 font-bold">✓</span> Custom Nail Art (2 Accent Nails)
+            </li>
+<li class="flex items-center gap-2">
+<span class="text-pink-400 font-bold">✓</span> Essential Oil Hand Massage
+            </li>
+</ul>
+<a class="block w-full py-3 rounded-full bg-pink-500 hover:bg-pink-600 active:scale-95 text-white font-semibold text-xs tracking-wide text-center transition-all shadow-neon-sm" href="#contact">
+            Choose Plan
+          </a>
+</div>
+<!-- Card 2: Luxury Spa Plan -->
+<div class="glass-card rounded-3xl p-5 border border-pink-500/30" data-purpose="pricing-card-vip">
+<div class="flex justify-between items-baseline mb-3">
+<div>
+<h3 class="text-lg font-bold text-white">Luxury Spa</h3>
+<p class="text-xs text-rose-300/80">The ultimate pampering package</p>
+</div>
+<div class="text-right">
+<span class="text-2xl font-black text-white">$75</span>
+<span class="text-[11px] text-rose-300">/session</span>
+</div>
+</div>
+<!-- Feature List -->
+<ul class="text-xs space-y-2 text-rose-100/80 mb-5 border-t border-pink-500/20 pt-3">
+<li class="flex items-center gap-2">
+<span class="text-pink-400 font-bold">✓</span> Everything in Premium Glam
+            </li>
+<li class="flex items-center gap-2">
+<span class="text-pink-400 font-bold">✓</span> Full Set Acrylics / Gel Extensions
+            </li>
+<li class="flex items-center gap-2">
+<span class="text-pink-400 font-bold">✓</span> Unlimited 3D Rhinestones &amp; Art
+            </li>
+<li class="flex items-center gap-2">
+<span class="text-pink-400 font-bold">✓</span> Warm Paraffin Wax Treatment
+            </li>
+</ul>
+<a class="block w-full py-3 rounded-full glass-pill hover:bg-white/10 active:scale-95 text-pink-200 font-semibold text-xs tracking-wide text-center transition-all border border-pink-500/30" href="#contact">
+            Select Plan
+          </a>
+</div>
+</div>
+</section>
+<!-- END: Pricing Section -->
+<!-- BEGIN: Contact / Appointment Section -->
+<section class="space-y-4" data-purpose="appointment-form-section" id="contact">
+<!-- Section Header -->
+<div class="text-center space-y-1">
+<span class="text-[11px] font-semibold tracking-wider text-pink-400 uppercase">Get In Touch</span>
+<h2 class="text-2xl font-bold text-white tracking-tight">Book Your Appointment</h2>
+<p class="text-xs text-rose-200/70">Reach out to book your appointment or ask us anything</p>
+</div>
+<div class="glass-card rounded-3xl p-5 border border-pink-500/30 shadow-glass">
+<form class="space-y-3.5" onsubmit="event.preventDefault(); alert('Thank you! We will confirm your appointment shortly.');">
+<!-- Full Name Field -->
+<div>
+<label class="block text-xs font-medium text-pink-200 mb-1" for="fullName">Full Name</label>
+<input class="w-full bg-[#200311]/70 border border-pink-500/30 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-pink-400/40 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition-all" id="fullName" placeholder="e.g. Jessica Miller" required="" type="text"/>
+</div>
+<!-- Email Field -->
+<div>
+<label class="block text-xs font-medium text-pink-200 mb-1" for="email">Email Address</label>
+<input class="w-full bg-[#200311]/70 border border-pink-500/30 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-pink-400/40 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition-all" id="email" placeholder="jessica@example.com" required="" type="email"/>
+</div>
+<!-- Phone Number Field -->
+<div>
+<label class="block text-xs font-medium text-pink-200 mb-1" for="phone">Phone Number</label>
+<input class="w-full bg-[#200311]/70 border border-pink-500/30 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-pink-400/40 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition-all" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<!-- Preferred Date & Service -->
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-xs font-medium text-pink-200 mb-1" for="serviceType">Service</label>
+<select class="w-full bg-[#200311] border border-pink-500/30 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition-all" id="serviceType">
+<option value="gel">Gel Manicure</option>
+<option value="acrylic">Acrylic Full Set</option>
+<option value="luxury">Luxury Spa Care</option>
+<option value="custom">Custom Nail Art</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-medium text-pink-200 mb-1" for="appointmentDate">Date</label>
+<input class="w-full bg-[#200311] border border-pink-500/30 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition-all" id="appointmentDate" type="date"/>
+</div>
+</div>
+<!-- Message Field -->
+<div>
+<label class="block text-xs font-medium text-pink-200 mb-1" for="message">Your Message (Optional)</label>
+<textarea class="w-full bg-[#200311]/70 border border-pink-500/30 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-pink-400/40 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition-all resize-none" id="message" placeholder="Tell us about your desired design or preferred artist..." rows="3"></textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-3.5 rounded-full bg-gradient-to-r from-pink-600 to-rose-500 text-white font-semibold text-xs tracking-wide shadow-neon-md active:scale-95 hover:shadow-neon-lg transition-all flex items-center justify-center gap-1.5 mt-2" type="submit">
+<span>Send Message</span>
+<span>✉</span>
+</button>
+</form>
+</div>
+</section>
+<!-- END: Contact / Appointment Section -->
+</main>
+<!-- END: Main Content -->
+<!-- BEGIN: MainFooter -->
+<footer class="mt-14 pt-8 pb-10 border-t border-pink-900/40 text-center relative z-10 px-4" data-purpose="page-footer">
+<div class="max-w-md mx-auto space-y-4">
+<!-- Footer Logo -->
+<div class="flex items-center justify-center space-x-2">
+<div class="w-7 h-7 rounded-full bg-gradient-to-tr from-pink-600 to-pink-400 flex items-center justify-center text-white text-xs font-bold shadow-neon-sm">
+          LN
+        </div>
+<span class="text-sm font-bold tracking-tight text-white">LUXE NAILS &amp; SPA</span>
+</div>
+<!-- Quick Nav Links -->
+<div class="flex items-center justify-center space-x-4 text-xs text-pink-300/80">
+<a class="hover:text-white transition-colors" href="#hero">Home</a>
+<span>•</span>
+<a class="hover:text-white transition-colors" href="#services">Services</a>
+<span>•</span>
+<a class="hover:text-white transition-colors" href="#gallery">Gallery</a>
+<span>•</span>
+<a class="hover:text-white transition-colors" href="#pricing">Pricing</a>
+<span>•</span>
+<a class="hover:text-white transition-colors" href="#contact">Contact</a>
+</div>
+<!-- Copyright -->
+<p class="text-[11px] text-pink-300/50">
+        © 2025 Luxe Nails Salon &amp; Spa. All rights reserved.
+      </p>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- Interactive script for active dock indicators and smooth interactions -->
+<script data-purpose="dock-interactions">
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('nav a');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.forEach(l => l.classList.remove('text-white'));
+          link.classList.add('text-white');
+        });
+      });
+    });
+  </script>
+</body></html>
